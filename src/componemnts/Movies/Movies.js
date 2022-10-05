@@ -19,11 +19,7 @@ const Movies = () => {
     },
   ];
   const content = mocMovies.map((movie) => {
-    return (
-      <div className="card my-2 ">
-        <Movie movie={movie} key={movie.imdbID} />
-      </div>
-    );
+    return <Movie key={movie.imdbID} movie={movie} />;
   });
   return <>{content}</>;
 };

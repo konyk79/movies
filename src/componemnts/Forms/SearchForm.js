@@ -4,7 +4,7 @@ const SearchForm = () => {
     <form className="form-horizontal w-75 mx-auto">
       <div className="row g-3 align-items-center w-50 mx-auto mb-2">
         <div className="col-lg-4 col-sm-12">
-          <label className="col-form-label " for="title">
+          <label className="col-form-label " htmlFor="title">
             Movie Title
           </label>
         </div>
@@ -19,12 +19,17 @@ const SearchForm = () => {
       </div>
       <div className="row g-3 align-items-center w-50 mx-auto mb-2">
         <div className="col-lg-4 col-sm-12">
-          <label className="col-form-label" for="type">
+          <label className="col-form-label" htmlFor="type">
             Movie Type
           </label>
         </div>
         <div className="col-lg-8 col-sm-12">
-          <select className="form-control " name="type" id="type">
+          <select
+            defaultValue={"movie"}
+            className="form-control "
+            name="type"
+            id="type"
+          >
             <option value="movie">Movie</option>
             <option value="series">Series</option>
           </select>
@@ -32,19 +37,22 @@ const SearchForm = () => {
       </div>
       <div className="row g-3 align-items-center w-50 mx-auto mb-5">
         <div className="col-lg-4 col-sm-12">
-          <label className="col-form-label" for="year">
+          <label className="col-form-label" htmlFor="year">
             Movie Year
           </label>
         </div>
         <div className="col-lg-8 col-sm-12">
-          <select className="form-control" name="year" id="year">
+          <select
+            defaultValue={"2022"}
+            className="form-control"
+            name="year"
+            id="year"
+          >
             <option value="2018">2018</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
-            <option value="2022" selected>
-              2022
-            </option>
+            <option value="2022">2022</option>
           </select>
         </div>
       </div>

@@ -9,7 +9,9 @@ function App() {
     <Layout>
       <div className="container bg-dark py-3 justify-content-center mx-auto">
         <SearchForm />
-        <Movies />
+        <ul>
+          <Movies />
+        </ul>
       </div>
     </Layout>
   );
