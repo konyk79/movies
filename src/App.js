@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SearchForm from "./componemnts/Forms/SearchForm";
+import Layout from "./componemnts/Layout/Layout";
+import Movies from "./componemnts/Movies/Movies";
 
 function App() {
+  document.body.classList.add("bg-dark");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <div className="container bg-dark py-3 justify-content-center mx-auto">
+        <SearchForm />
+        <Movies />
+      </div>
+    </Layout>
   );
 }
 
