@@ -13,7 +13,13 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="#">Contact me</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/in/oleksandr-konyk/"
+              >
+                Contact me
+              </a>
             </li>
           </ul>
         </nav>
