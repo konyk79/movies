@@ -39,15 +39,14 @@ const Movies = () => {
   return (
     <>
       <SearchForm onFormDataChange={FormDataChangeHandler} query={query} />
-      <ul>
-        {isLoading ? (
-          <div className="text-center display-3 text-info">
-            Data is fetching...
-          </div>
-        ) : (
-          content
-        )}
-      </ul>
+
+      {isLoading ? (
+        <div className="text-center display-3 text-info">
+          Data is fetching...
+        </div>
+      ) : (
+        <ul className="px-2">{content}</ul>
+      )}
     </>
   );
 };
