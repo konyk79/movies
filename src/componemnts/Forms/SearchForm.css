@@ -1,8 +1,8 @@
-/* I understand that it will affect for all controls with form-control col-form-label, it exactly what I need.*/
+/* I understand that it will affect for all controls with form-control col-form-label classes, it exactly what I need.*/
 .form-control {
   min-width: 100px !important;
 }
 .col-form-label {
-  color: #61dafb !important;
+  color: var(--header-text-color) !important;
   min-width: 100px !important;
 }

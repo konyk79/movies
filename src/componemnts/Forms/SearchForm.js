@@ -1,5 +1,17 @@
+import { useRef } from "react";
 import "./SearchForm.css";
-const SearchForm = () => {
+const SearchForm = (props) => {
+  const title = useRef();
+  const type = useRef();
+  const year = useRef();
+  const onChangeHandler = () => {
+    const newData = {
+      year: year.current.value,
+      type: type.current.value,
+      title: title.current.value,
+    };
+    props.onFormDataChange(newData);
+  };
   return (
     <form className="form-horizontal w-75 mx-auto">
       <div className="row g-3 align-items-center w-50 mx-auto mb-2">
@@ -14,6 +26,9 @@ const SearchForm = () => {
             type="text"
             name="title"
             id="title"
+            ref={title}
+            value={props.query.title}
+            onChange={onChangeHandler}
           />
         </div>
       </div>
@@ -25,10 +40,13 @@ const SearchForm = () => {
         </div>
         <div className="col-lg-8 col-sm-12">
           <select
-            defaultValue={"movie"}
+            ref={type}
+            // defaultValue={"movie"}
+            value={props.query.type}
             className="form-control "
             name="type"
             id="type"
+            onChange={onChangeHandler}
           >
             <option value="movie">Movie</option>
             <option value="series">Series</option>
@@ -43,10 +61,13 @@ const SearchForm = () => {
         </div>
         <div className="col-lg-8 col-sm-12">
           <select
-            defaultValue={"2022"}
+            // defaultValue={"2022"}
+            value={props.query.year}
             className="form-control"
             name="year"
             id="year"
+            ref={year}
+            onChange={onChangeHandler}
           >
             <option value="2018">2018</option>
             <option value="2019">2019</option>

@@ -1,3 +1,8 @@
+:root {
+  --header-text-color: #61dafb;
+  --header-background-color: #252424;
+}
+
 .App {
   text-align: center;
 }

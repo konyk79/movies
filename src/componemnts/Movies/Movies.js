@@ -1,26 +1,54 @@
+import { useEffect, useState } from "react";
+import useFetchData from "../../hooks/useFetchData";
 import Movie from "./Movie";
-
+import SearchForm from "../Forms/SearchForm";
 const Movies = () => {
-  const mocMovies = [
-    {
-      Title: "The Red Jasmine",
-      Year: "2022",
-      imdbID: "tt11112060",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BM2QyNDEwODctMDA2Yi00MDRkLTkwN2UtM2VkMjA0NzhmN2MzXkEyXkFqcGdeQXVyNjM0NDc4NTE@._V1_SX300.jpg",
-    },
-    {
-      Title: "Jasmine",
-      Year: "2022",
-      imdbID: "tt15352110",
-      Type: "movie",
-      Poster: "N/A",
-    },
-  ];
-  const content = mocMovies.map((movie) => {
-    return <Movie key={movie.imdbID} movie={movie} />;
+  const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState({
+    type: "movie",
+    year: "2022",
+    title: "Star",
   });
-  return <>{content}</>;
+  const queryString = `?type=${query.type}&title=${query.title}&year=${query.year}`;
+  const readDataProcess = (data) => {
+    if (data.Response === "False") {
+      setMovies([]);
+      throw new Error(`Fetching data error: ${data.Error} !`);
+    }
+    setMovies(data.Search);
+  };
+  const [error, isLoading, request] = useFetchData();
+  const FormDataChangeHandler = (query) => setQuery(query);
+  useEffect(() => {
+    request(
+      {
+        url: `http://localhost:3001/movies${queryString}`,
+        method: "GET",
+      },
+      readDataProcess
+    );
+  }, [request, queryString]);
+  const content =
+    error !== "" ? (
+      <div className="text-danger text-center display-3">{error}</div>
+    ) : (
+      movies.map((movie) => {
+        return <Movie key={movie.imdbID} movie={movie} />;
+      })
+    );
+  return (
+    <>
+      <SearchForm onFormDataChange={FormDataChangeHandler} query={query} />
+      <ul>
+        {isLoading ? (
+          <div className="text-center display-3 text-info">
+            Data is fetching...
+          </div>
+        ) : (
+          content
+        )}
+      </ul>
+    </>
+  );
 };
 export default Movies;
